@@ -13,7 +13,7 @@ class Rpc {
     let id = "llama.cpp"
     let message = {
       "_": [
-        os.platform() === 'win32' ? 'main' : './main'
+        os.platform() === 'win32' ? 'main' : './llama-cli'
       ],
       "-f": path.resolve(req.cwd, 'prompt.txt'),
       "m": path.resolve(__dirname, "models", req.params.model),
@@ -50,7 +50,7 @@ class Rpc {
 
     let platform = os.platform()
     if (!params.message._) {
-      params.message._ = [(platform === "win32" ? "main" : "./main")]
+      params.message._ = [(platform === "win32" ? "main" : "./llama-cli")]
     }
 
     if (!params.path) {
